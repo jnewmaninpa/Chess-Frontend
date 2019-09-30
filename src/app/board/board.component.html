@@ -1,0 +1,5 @@
+<div class="board-holder">
+  <div class="chessboard" id="board">
+    <app-square *ngFor="let square of squares" [square]="square" [selectedPiece]="selectedPiece" [game]="game"></app-square>
+  </div>
+</div>

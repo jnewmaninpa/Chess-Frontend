@@ -1,0 +1,20 @@
+.white {
+  background-color: #fff;
+}
+
+.black {
+  background-color: #999;
+}
+
+.selected {
+  background-color: #7395DD;
+}
+
+button {
+  font-size: calc(6.5vmin * (2/3));
+  text-align: center;
+  padding: 0;
+  border-width: 1px;
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,25 @@
+.login, .create_account {
+  display: grid;
+  text-align: center;
+  padding:1vmax;
+  border: .25vmax;
+  margin: auto;
+  margin-top: 10vh;
+  border-color: black;
+  border-style: solid;
+  background-color: #7395DD;
+  width: 20vmax;
+  height: 30vmax;
+  min-width: 250px;
+  min-height: 350px;
+}
+
+#create {
+  display:none;
+}
+
+body {
+  margin: 0;
+  background-color: #3B4D72;
+  font-family: 'Roboto', sans-serif;
+}

@@ -1,0 +1,12 @@
+<div>
+  <button (click)="newGame()">New Game</button>
+  <h3>Game Number: {{game.id}}</h3>
+  <input id="gameNumInput" type="number" min="1" [(ngModel)]="gameId">
+  <button id="loadGameBtn" (click)="loadGame()">Load Game</button>
+  <h3>Player Name: {{game.activePlayer}}</h3>
+  <button id="singleAi" (click)="singleAi()">Single AI Move</button>
+  <button id="multiAi" (click)="multiAi()">Multiple AI Move</button>
+  <button id="stopAi" (click)="stopAi()">Stop Multiple AI Move</button>
+  <h3 *ngIf="game.playerInCheck != 'NONE' && game.playerInCheck != null">{{game.playerInCheck}} in Check!</h3>
+  <h3 id="gameOverDiv" *ngIf="game.gameOver">Game Over!</h3>
+</div>

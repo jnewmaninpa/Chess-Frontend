@@ -1,0 +1,15 @@
+<div *ngIf="!user.signedIn; else game">
+  <app-login-box [user]="user"></app-login-box>
+</div>
+
+<ng-template #game>
+  <div class="main-body">
+    <app-header [user]="user"></app-header>
+    <div class="main">
+      <app-left-menu [selectedPiece]="selectedPiece" [game]="game"></app-left-menu>
+      <app-board [game]="game" [selectedPiece]="selectedPiece"></app-board>
+    </div>
+    <app-footer [game]="game" [user]="user"></app-footer>
+  </div>
+
+</ng-template>
