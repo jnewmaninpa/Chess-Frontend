@@ -79,11 +79,11 @@ export class SquareComponent implements OnInit {
                   .subscribe((move: Move) => {
                     if (move.isValid) {
                       fillBoard(move.game.fen, this.selectedPiece);
-                      this.game.activePlayer = move.game.activePlayer;
+                      this.game.gameState.activePlayer = move.game.gameState.activePlayer;
                       this.game.fen = move.game.fen;
-                      this.game.gameOver = move.game.gameOver;
+                      this.game.gameState.gameOver = move.game.gameState.gameOver;
                       this.game.id = move.game.id;
-                      this.game.playerInCheck = move.game.playerInCheck;
+                      this.game.gameState.playerInCheck = move.game.gameState.playerInCheck;
                   } else {
                       // moves was not valid, do nothing
                   }
@@ -97,11 +97,11 @@ export class SquareComponent implements OnInit {
                   .subscribe((move: Move) => {
                     if (move.isValid) {
                       fillBoard(move.game.fen, this.selectedPiece);
-                      this.game.activePlayer = move.game.activePlayer;
+                      this.game.gameState.activePlayer = move.game.gameState.activePlayer;
                       this.game.fen = move.game.fen;
-                      this.game.gameOver = move.game.gameOver;
+                      this.game.gameState.gameOver = move.game.gameState.gameOver;
                       this.game.id = move.game.id;
-                      this.game.playerInCheck = move.game.playerInCheck;
+                      this.game.gameState.playerInCheck = move.game.gameState.playerInCheck;
                   } else {
                       // moves was not valid, do nothing
                   }

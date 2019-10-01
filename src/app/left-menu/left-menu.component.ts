@@ -5,6 +5,7 @@ import { Position } from 'src/models/Position';
 import { fillBoard } from './FillBoard';
 import { MoveService } from '../move.service';
 import { Move } from 'src/models/Move';
+import { GameState } from 'src/models/GameState';
 
 @Component({
   selector: 'app-left-menu',
@@ -28,9 +29,11 @@ export class LeftMenuComponent implements OnInit {
       .subscribe((game: Game) => {
         this.game.id = game.id;
         this.game.fen = game.fen;
-        this.game.activePlayer = game.activePlayer;
-        this.game.playerInCheck = game.playerInCheck;
-        this.game.gameOver = game.gameOver;
+        // this is to fix a bug where gameState is undefined
+        this.game.gameState = new GameState();
+        this.game.gameState.activePlayer = game.gameState.activePlayer;
+        this.game.gameState.playerInCheck = game.gameState.playerInCheck;
+        this.game.gameState.gameOver = game.gameState.gameOver;
         fillBoard(game.fen, this.selectedPiece);
         this.gameId = game.id;
       });
@@ -41,9 +44,11 @@ export class LeftMenuComponent implements OnInit {
       .subscribe((game: Game) => {
         this.game.id = game.id;
         this.game.fen = game.fen;
-        this.game.activePlayer = game.activePlayer;
-        this.game.playerInCheck = game.playerInCheck;
-        this.game.gameOver = game.gameOver;
+        // this is to fix a bug where gameState is undefined
+        this.game.gameState = new GameState();
+        this.game.gameState.activePlayer = game.gameState.activePlayer;
+        this.game.gameState.playerInCheck = game.gameState.playerInCheck;
+        this.game.gameState.gameOver = game.gameState.gameOver;
         fillBoard(game.fen, this.selectedPiece);
       });
   }
@@ -53,9 +58,10 @@ export class LeftMenuComponent implements OnInit {
       .subscribe((move: Move) => {
         this.game.id = move.game.id;
         this.game.fen = move.game.fen;
-        this.game.activePlayer = move.game.activePlayer;
-        this.game.playerInCheck = move.game.playerInCheck;
-        this.game.gameOver = move.game.gameOver;
+        this.game.gameState.activePlayer = move.game.gameState.activePlayer;
+        this.game.gameState.playerInCheck = move.game.gameState.playerInCheck;
+        this.game.gameState.gameOver = move.game.gameState.gameOver;
+        console.log(this.game)
         fillBoard(move.game.fen, this.selectedPiece);
       });
   }

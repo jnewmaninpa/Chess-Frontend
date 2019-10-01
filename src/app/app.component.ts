@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/models/User';
 import { Game } from 'src/models/Game';
 import { Position } from 'src/models/Position';
+import { GameState } from 'src/models/GameState';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.user = new User();
     this.game = new Game();
+    this.game.gameState = new GameState();
     this.selectedPiece = new Position();
 
     if (localStorage.getItem('user') != null) {
