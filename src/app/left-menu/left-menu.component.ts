@@ -61,7 +61,6 @@ export class LeftMenuComponent implements OnInit {
         this.game.gameState.activePlayer = move.game.gameState.activePlayer;
         this.game.gameState.playerInCheck = move.game.gameState.playerInCheck;
         this.game.gameState.gameOver = move.game.gameState.gameOver;
-        console.log(this.game)
         fillBoard(move.game.fen, this.selectedPiece);
       });
   }
@@ -88,6 +87,7 @@ export class LeftMenuComponent implements OnInit {
 
 
   ngOnInit() {
+    this.loadGame();
   }
 
 }
