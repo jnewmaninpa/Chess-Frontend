@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GameService } from '../game.service';
+import { GameService } from '../../services/game.service';
 import { Game } from 'src/models/Game';
 import { Position } from 'src/models/Position';
 import { fillBoard } from './FillBoard';
-import { MoveService } from '../move.service';
+import { MoveService } from '../../services/move.service';
 import { Move } from 'src/models/Move';
 import { GameState } from 'src/models/GameState';
 

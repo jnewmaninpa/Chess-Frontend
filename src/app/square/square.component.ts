@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MoveService } from '../move.service';
+import { MoveService } from '../../services/move.service';
 import { Move } from 'src/models/Move';
 import { Game } from 'src/models/Game';
 import { Square } from 'src/models/Square';
