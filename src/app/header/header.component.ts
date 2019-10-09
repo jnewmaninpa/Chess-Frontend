@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   @Input('user') user: User;
   // tslint:disable-next-line: no-input-rename
   @Input('sidenav') sidenav: MatSidenav;
-
+  // tslint:disable-next-line: no-input-rename
   @Input('mobileQuery') mobileQuery;
 
   constructor() { }

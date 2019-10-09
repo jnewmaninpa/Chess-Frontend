@@ -1,23 +1,3 @@
-/* .login, .create_account {
-  display: grid;
-  text-align: center;
-  padding:1vmax;
-  border: .25vmax;
-  margin: auto;
-  margin-top: 10vh;
-  border-color: black;
-  border-style: solid;
-  width: 20vmax;
-  height: 30vmax;
-  min-width: 250px;
-  min-height: 350px;
-} */
-
-/* #login-box {
-  text-align: center;
-  padding-top: 5em;
-} */
-
 #login-box {
   display: flex;
   justify-content: center;
@@ -37,9 +17,3 @@ mat-card button {
 #create {
   display:none;
 }
-
-/* body {
-  margin: 0;
-  background-color: #3B4D72;
-  font-family: 'Roboto', sans-serif;
-} */
