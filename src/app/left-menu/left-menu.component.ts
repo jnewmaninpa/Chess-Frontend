@@ -81,7 +81,6 @@ export class LeftMenuComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.game.gameState = new GameState();
-    this.loadGame();
   }
 
   ngAfterViewInit() {
