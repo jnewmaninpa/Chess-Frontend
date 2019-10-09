@@ -1,17 +1,18 @@
 div {
   text-align: center;
-  background-color: #7395DD;
+  /* background-color: #7395DD; */
   margin: 1em;
-  margin-left: 0px;
+  /* margin-left: 0px;
   padding:1em;
-  height: calc(100% - 4em);
+  height: calc(100% - 4em); */
+  width: 220px;
 }
 
-div > * {
+/* div > * {
   margin-bottom: 1em;
 }
 
 div > h3 {
   margin: 0;
   margin-bottom: 1em;
-}
+} */

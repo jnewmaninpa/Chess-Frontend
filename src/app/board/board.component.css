@@ -1,11 +1,11 @@
-.board-holder {
+/* .board-holder {
   text-align: center;
   background-color: #7395DD;
   margin: 1em;
   margin-right: 0;
   padding:1em;
   height: calc(100% - 4em);
-}
+} */
 
 
 .chessboard {
@@ -14,7 +14,7 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  width: calc(80vmin * (2/3));
-  height: calc(80vmin * (2/3));
+  /* width: calc(80vmin * (2/3));
+  height: calc(80vmin * (2/3)); */
   border: calc(3vmin * (2/3)) solid #333;
 }

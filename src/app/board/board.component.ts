@@ -1,13 +1,37 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, HostListener } from '@angular/core';
 import { Square } from 'src/models/Square';
 import { Game } from 'src/models/Game';
 import { Position } from 'src/models/Position';
+
+function getMarginAndBorderHeight(element: HTMLElement) {
+  const computedStyle = getComputedStyle(element);
+  const margin = parseInt(computedStyle.marginTop, 10) + parseInt(computedStyle.marginBottom, 10);
+  const border = parseInt(computedStyle.borderTop, 10) + parseInt(computedStyle.borderBottom, 10);
+  return margin + border;
+}
+
+function getinnerHeight(element: HTMLElement) {
+  const computedStyle = getComputedStyle(element);
+  const margin = parseInt(computedStyle.marginTop, 10) + parseInt(computedStyle.marginBottom, 10);
+  const border = parseInt(computedStyle.borderTop, 10) + parseInt(computedStyle.borderBottom, 10);
+  const height = parseInt(computedStyle.height, 10);
+  return margin + border + height;
+}
+
+function getinnerWidth(element: HTMLElement) {
+  const computedStyle = getComputedStyle(element);
+  const margin = parseInt(computedStyle.marginLeft, 10) + parseInt(computedStyle.marginRight, 10);
+  const border = parseInt(computedStyle.borderLeft, 10) + parseInt(computedStyle.borderRight, 10);
+  const height = parseInt(computedStyle.width, 10);
+  return margin + border + height;
+}
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
@@ -16,6 +40,38 @@ export class BoardComponent implements OnInit {
   squares: Array<Square>;
   // tslint:disable-next-line: no-input-rename
   @Input('game') game: Game;
+  // tslint:disable-next-line: no-input-rename
+  @Input('mobileQuery') mobileQuery;
+
+  @HostListener('window:resize', [])
+  onResize() {
+    this.resizeBoard();
+  }
+
+  resizeBoard() {
+    let size: number;
+    const boardElement = document.getElementById('board');
+    const headerHeight = getinnerHeight(document.getElementById('header'));
+
+    if (this.mobileQuery.matches) {
+      if ((window.innerHeight - headerHeight) > window.innerWidth) {
+        size = window.innerWidth - getMarginAndBorderHeight(boardElement);
+      } else {
+        size = window.innerHeight - (getinnerHeight(document.getElementById('header')) + getMarginAndBorderHeight(boardElement));
+      }
+    } else {
+      const sidebarWidth = getinnerWidth(document.getElementById('side-bar'));
+      if ((window.innerHeight - headerHeight) > (window.innerWidth - sidebarWidth)) {
+        size = window.innerWidth - sidebarWidth - getMarginAndBorderHeight(boardElement);
+      } else {
+        size = window.innerHeight - (headerHeight + getMarginAndBorderHeight(boardElement));
+      }
+    }
+
+
+    boardElement.style.width = size + 'px';
+    boardElement.style.height = size + 'px';
+  }
 
   showBoard() {
 
@@ -27,8 +83,8 @@ export class BoardComponent implements OnInit {
         for (let x = 0; x <= 7; x++) {
 
             const id = 8 * y + x;
-
             const square = new Square();
+
             if (x % 2 === y % 2) {
               square.color = 'black';
             } else {
@@ -36,15 +92,16 @@ export class BoardComponent implements OnInit {
             }
             square.id = id;
             this.squares.push(square);
-            // div.addEventListener("click", myFunction);
         }
     }
 }
 
-
-
   ngOnInit() {
     this.showBoard();
+  }
+
+  ngAfterViewInit() {
+    this.resizeBoard();
   }
 
 }

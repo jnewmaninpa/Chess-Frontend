@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { Game } from 'src/models/Game';
 import { Position } from 'src/models/Position';
@@ -12,7 +12,7 @@ import { GameState } from 'src/models/GameState';
   templateUrl: './left-menu.component.html',
   styleUrls: ['./left-menu.component.css']
 })
-export class LeftMenuComponent implements OnInit {
+export class LeftMenuComponent implements OnInit, AfterViewInit {
 
   constructor(private gameService: GameService, private moveService: MoveService) { }
 
@@ -27,30 +27,25 @@ export class LeftMenuComponent implements OnInit {
   newGame() {
     this.gameService.newGame()
       .subscribe((game: Game) => {
-        this.game.id = game.id;
-        this.game.fen = game.fen;
-        // this is to fix a bug where gameState is undefined
-        this.game.gameState = new GameState();
-        this.game.gameState.activePlayer = game.gameState.activePlayer;
-        this.game.gameState.playerInCheck = game.gameState.playerInCheck;
-        this.game.gameState.gameOver = game.gameState.gameOver;
-        fillBoard(game.fen, this.selectedPiece);
-        this.gameId = game.id;
+        this.updateGame(game);
       });
   }
 
   loadGame() {
     this.gameService.loadGame(this.gameId)
       .subscribe((game: Game) => {
-        this.game.id = game.id;
-        this.game.fen = game.fen;
-        // this is to fix a bug where gameState is undefined
-        this.game.gameState = new GameState();
-        this.game.gameState.activePlayer = game.gameState.activePlayer;
-        this.game.gameState.playerInCheck = game.gameState.playerInCheck;
-        this.game.gameState.gameOver = game.gameState.gameOver;
-        fillBoard(game.fen, this.selectedPiece);
+        this.updateGame(game);
       });
+  }
+
+  updateGame(game: Game) {
+    this.game.id = game.id;
+    this.game.fen = game.fen;
+    this.game.gameState.activePlayer = game.gameState.activePlayer;
+    this.game.gameState.playerInCheck = game.gameState.playerInCheck;
+    this.game.gameState.gameOver = game.gameState.gameOver;
+    fillBoard(game.fen, this.selectedPiece);
+    this.gameId = game.id;
   }
 
   singleAi() {
@@ -71,7 +66,7 @@ export class LeftMenuComponent implements OnInit {
     (document.getElementById('stopAi') as HTMLInputElement).disabled = false;
     this.interval = setInterval(_ => {
       this.singleAi();
-      if (document.getElementById('gameOverDiv').textContent === 'Game Over!') {
+      if (document.getElementById('gameOverDiv') != null && document.getElementById('gameOverDiv').textContent === 'Game Over!') {
         this.stopAi();
       }
     }, 500);
@@ -84,10 +79,15 @@ export class LeftMenuComponent implements OnInit {
     (document.getElementById('stopAi') as HTMLInputElement).disabled = true;
   }
 
-
-
   ngOnInit() {
+    this.game.gameState = new GameState();
     this.loadGame();
+    // (document.getElementById('stopAi') as HTMLInputElement).disabled = true;
+  }
+
+  ngAfterViewInit() {
+    this.loadGame();
+    (document.getElementById('stopAi') as HTMLInputElement).disabled = true;
   }
 
 }

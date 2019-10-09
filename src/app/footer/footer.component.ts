@@ -11,8 +11,6 @@ export class FooterComponent implements OnInit {
 
   // tslint:disable-next-line: no-input-rename
   @Input('user') user: User;
-  // tslint:disable-next-line: no-input-rename
-  @Input('game') game: Game;
 
   logout() {
     this.user.username = null;

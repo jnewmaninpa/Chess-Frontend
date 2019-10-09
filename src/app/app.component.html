@@ -4,12 +4,18 @@
 
 <ng-template #game>
   <div class="main-body">
-    <app-header [user]="user"></app-header>
+    <app-header [mobileQuery]="mobileQuery" [sidenav]="sidenav" [user]="user"></app-header>
     <div class="main">
-      <app-left-menu [selectedPiece]="selectedPiece" [game]="game"></app-left-menu>
-      <app-board [game]="game" [selectedPiece]="selectedPiece"></app-board>
+      <mat-sidenav-container [hasBackdrop]="mobileQuery.matches" style="position: fixed; height: 100%;">
+        <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="opened || !mobileQuery.matches">
+          <app-left-menu [selectedPiece]="selectedPiece" [game]="game"></app-left-menu>
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <app-board [mobileQuery]="mobileQuery" [game]="game" [selectedPiece]="selectedPiece"></app-board>
+        </mat-sidenav-content>
+
+      </mat-sidenav-container>
     </div>
-    <app-footer [game]="game" [user]="user"></app-footer>
   </div>
 
 </ng-template>

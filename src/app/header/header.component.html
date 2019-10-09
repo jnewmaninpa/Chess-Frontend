@@ -1,5 +1,11 @@
-<div>
+<!-- <div>
   <h1>Welcome {{user.username}}</h1>
-</div>
+</div> -->
+
+<mat-toolbar id="header" color="primary">
+    <button *ngIf='mobileQuery.matches' mat-icon-button (click)="(sidenav).toggle()"><mat-icon>menu</mat-icon></button>
+    <h1>Welcome {{user.username}}</h1>
+    <app-footer [user]="user"></app-footer>
+</mat-toolbar>
 
 

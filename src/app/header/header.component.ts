@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/models/User';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,10 @@ export class HeaderComponent implements OnInit {
 
   // tslint:disable-next-line: no-input-rename
   @Input('user') user: User;
+  // tslint:disable-next-line: no-input-rename
+  @Input('sidenav') sidenav: MatSidenav;
+
+  @Input('mobileQuery') mobileQuery;
 
   constructor() { }
 
