@@ -5,24 +5,49 @@ import { Position } from 'src/models/Position';
 
 function getMarginAndBorderHeight(element: HTMLElement) {
   const computedStyle = getComputedStyle(element);
-  const margin = parseInt(computedStyle.marginTop, 10) + parseInt(computedStyle.marginBottom, 10);
-  const border = parseInt(computedStyle.borderTop, 10) + parseInt(computedStyle.borderBottom, 10);
+  let margin = parseInt(computedStyle.marginTop, 10) + parseInt(computedStyle.marginBottom, 10);
+  let border = parseInt(computedStyle.borderTop, 10) + parseInt(computedStyle.borderBottom, 10);
+  if (isNaN(margin)) {
+    margin = 0;
+  }
+  if (isNaN(border)) {
+    border = 10;
+  }
+
   return margin + border;
 }
 
 function getinnerHeight(element: HTMLElement) {
   const computedStyle = getComputedStyle(element);
-  const margin = parseInt(computedStyle.marginTop, 10) + parseInt(computedStyle.marginBottom, 10);
-  const border = parseInt(computedStyle.borderTop, 10) + parseInt(computedStyle.borderBottom, 10);
-  const height = parseInt(computedStyle.height, 10);
+  let margin = parseInt(computedStyle.marginTop, 10) + parseInt(computedStyle.marginBottom, 10);
+  let border = parseInt(computedStyle.borderTop, 10) + parseInt(computedStyle.borderBottom, 10);
+  let height = parseInt(computedStyle.height, 10);
+  if (isNaN(margin)) {
+    margin = 0;
+  }
+  if (isNaN(border)) {
+    border = 10;
+  }
+  if (isNaN(height)) {
+    height = 0;
+  }
   return margin + border + height;
 }
 
 function getinnerWidth(element: HTMLElement) {
   const computedStyle = getComputedStyle(element);
-  const margin = parseInt(computedStyle.marginLeft, 10) + parseInt(computedStyle.marginRight, 10);
-  const border = parseInt(computedStyle.borderLeft, 10) + parseInt(computedStyle.borderRight, 10);
-  const height = parseInt(computedStyle.width, 10);
+  let margin = parseInt(computedStyle.marginLeft, 10) + parseInt(computedStyle.marginRight, 10);
+  let border = parseInt(computedStyle.borderLeft, 10) + parseInt(computedStyle.borderRight, 10);
+  let height = parseInt(computedStyle.width, 10);
+  if (isNaN(margin)) {
+    margin = 0;
+  }
+  if (isNaN(border)) {
+    border = 10;
+  }
+  if (isNaN(height)) {
+    height = 0;
+  }
   return margin + border + height;
 }
 
@@ -52,6 +77,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
     let size: number;
     const boardElement = document.getElementById('board');
     const headerHeight = getinnerHeight(document.getElementById('header'));
+
+    console.log(getMarginAndBorderHeight(boardElement));
 
     if (this.mobileQuery.matches) {
       if ((window.innerHeight - headerHeight) > window.innerWidth) {

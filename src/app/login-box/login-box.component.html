@@ -1,39 +1,41 @@
-<div id="login" class="login">
+<div id="login-box">
+  <mat-card id="login" class="login">
 
-  <h1>Login</h1>
+    <h1>Login</h1>
 
-  <label for="username"><b>Username</b></label>
-  <input id="uname_login" [(ngModel)]="user.username" type="text" placeholder="Enter Username" name="username" required="" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-  <br>
-  <label for="password"><b>Password</b></label>
-  <input id="pass_login" [(ngModel)]="user.password" type="password" placeholder="Enter Password" name="password" required="" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-  <br>
-  <button type="submit" (click)="login()">Login</button>
-  <br>
-  <p>Need an account?</p>
-  <button type="submit" onclick="
-  document.getElementById('create').setAttribute('style', 'display: grid');
-  document.getElementById('login').setAttribute('style','display: none');
-  ">Create Account</button>
+    <mat-form-field>
+      <input matInput id="uname_login" [(ngModel)]="user.username" type="text" placeholder="Username" name="username" required="" autocomplete="off">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput id="pass_login" [(ngModel)]="user.password" type="password" placeholder="Password" name="password" required="" autocomplete="off">
+    </mat-form-field>
+    <button color="primary" mat-raised-button type="submit" (click)="login()">Login</button>
+    <p>Need an account?</p>
+    <button color="primary" mat-raised-button type="submit" onclick="
+    document.getElementById('create').setAttribute('style', 'display: grid');
+    document.getElementById('login').setAttribute('style','display: none');
+    ">Create Account</button>
 
-</div>
+  </mat-card>
 
-<div id="create" class="create_account">
 
-  <h1>Create Account</h1>
 
-  <label for="username"><b>Username</b></label>
-  <input id="uname_create" [(ngModel)]="user.username" type="text" placeholder="Enter Username" name="username" required="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-  <br>
-  <label for="password"><b>Password</b></label>
-  <input id="pass_create" [(ngModel)]="user.password" type="password" placeholder="Enter Password" name="password" required="" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
-  <br>
-  <button type="submit" (click)="create_account()">Create Account</button>
-  <br>
-  <p>Already have an accout?</p>
-  <button type="submit" onclick="
-  document.getElementById('create').setAttribute('style', 'display: none');
-  document.getElementById('login').setAttribute('style','display: grid');
-  ">Go to Login</button>
+  <mat-card id="create" class="create_account">
 
+    <h1>Create Account</h1>
+
+    <mat-form-field>
+        <input matInput id="uname_create" [(ngModel)]="user.username" type="text" placeholder="Username" name="username" required="" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput id="pass_create" [(ngModel)]="user.password" type="password" placeholder="Password" name="password" required="" autocomplete="off">
+      </mat-form-field>
+    <button color="primary" mat-raised-button type="submit" (click)="create_account()">Create Account</button>
+    <p>Already have an accout?</p>
+    <button color="primary" mat-raised-button type="submit" onclick="
+    document.getElementById('create').setAttribute('style', 'display: none');
+    document.getElementById('login').setAttribute('style','display: grid');
+    ">Go to Login</button>
+
+  </mat-card>
 </div>

@@ -16,5 +16,5 @@
   grid-template-rows: repeat(8, 1fr);
   /* width: calc(80vmin * (2/3));
   height: calc(80vmin * (2/3)); */
-  border: calc(3vmin * (2/3)) solid #333;
+  border: 5px solid #333;
 }

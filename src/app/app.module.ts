@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { LoginBoxComponent } from './login-box/login-box.component';
@@ -37,7 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

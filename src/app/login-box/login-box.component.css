@@ -1,4 +1,4 @@
-.login, .create_account {
+/* .login, .create_account {
   display: grid;
   text-align: center;
   padding:1vmax;
@@ -7,19 +7,39 @@
   margin-top: 10vh;
   border-color: black;
   border-style: solid;
-  background-color: #7395DD;
   width: 20vmax;
   height: 30vmax;
   min-width: 250px;
   min-height: 350px;
+} */
+
+/* #login-box {
+  text-align: center;
+  padding-top: 5em;
+} */
+
+#login-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+mat-card {
+  display: grid;
+  align-items: center;
+}
+
+mat-card button {
+  display: block;
 }
 
 #create {
   display:none;
 }
 
-body {
+/* body {
   margin: 0;
   background-color: #3B4D72;
   font-family: 'Roboto', sans-serif;
-}
+} */
