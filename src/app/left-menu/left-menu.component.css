@@ -1,5 +1,9 @@
-div {
-  text-align: center;
+#side-bar {
+  display: grid;
   margin: 1em;
   width: 220px;
+  text-align: center;
+}
+#side-bar > * {
+  margin: 1em;
 }

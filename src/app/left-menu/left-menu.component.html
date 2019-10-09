@@ -2,15 +2,11 @@
   <mat-form-field>
     <input matInput id="gameNumInput" placeholder="Game Number" type="number" min="1" [(ngModel)]="gameId">
   </mat-form-field>
-  <br><br>
   <button mat-raised-button (click)="newGame()">New Game</button>
-  <br><br>
   <button mat-raised-button id="loadGameBtn" (click)="loadGame()">Load Game</button>
   <h3>Current Player: {{game.gameState.activePlayer}}</h3>
   <button mat-raised-button id="singleAi" (click)="singleAi()">Single AI Move</button>
-  <br><br>
   <button mat-raised-button id="multiAi" (click)="multiAi()">Multiple AI Move</button>
-  <br><br>
   <button mat-raised-button id="stopAi" (click)="stopAi()">Stop Multiple AI Move</button>
   <h3 *ngIf="game.gameState.playerInCheck != 'NONE' && game.gameState.playerInCheck != null">{{game.gameState.playerInCheck}} in Check!</h3>
   <h3 id="gameOverDiv" *ngIf="game.gameState.gameOver">Game Over!</h3>
