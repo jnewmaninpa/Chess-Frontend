@@ -34,6 +34,8 @@ export class LoginBoxComponent implements OnInit {
         signedIn: true,
       };
         this.user.signedIn = true;
+        localStorage.setItem('user', this.user.username);
+        location.reload();
     },
       error => alert('Username already exists'));
   }
